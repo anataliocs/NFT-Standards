@@ -4,6 +4,9 @@
 # Mac OS files system
 .DS_Store
 
+# truffle builds
+/build
+
 # Logs
 logs
 *.log
