@@ -111,18 +111,28 @@ Next, you will need to [set up a free account with Infura](https://infura.io/reg
 
 ![infura-signup.png](img/infura-signup.png)
 
-Next, select a project. We will choose IPFS.
+Next, select a project. We will create two projects.
+First, select Ethereum project.
 
 ![create-new-project.png](img/create-new-project.png)
 
+Choose the Ropsten Test Network
+
+![eth-creds-infura-ropsten](img/eth-creds-infura-ropsten.png)
+
 Access your credentials. The project ID can be akin to your username, and the project secret a password.
+
+![eth-creds-infura](img/eth-creds-infura.png)
+
+Next, create a new project and choose IPFS.
+You will save both these credentials into an .env file.
+
+![ipfs-creds-infura](img/ipfs-creds-infura.png)
 
 **TODO: Fix**  
 Your IPFS API endpoint is...  
 The dedicated gateway is ...  
 The subdomain is ...
-
-![credentials-infura](img/credentials-infura.png)
 
 **TODO: FIX**  
 Add config to upload things to IPFS
@@ -180,9 +190,11 @@ Add the Infura credentials
 ```text
 MNEMONIC= Add your 12 word secret phrase that accessess your assets on Ethereum. Never share these! Wrap in qoutations.
 
-INFURA_PROJECT_SECRET= Add your secret here. (No qoutations).
+INFURA_PROJECT_ID= Add your secret here. (No qoutations)
+INFURA_PROJECT_SECRET=Add your ID here. (No quotations)
 
-INFURA_PROJECT_ID= Add your ID here. (No quotations).
+INFURA_IPFS_PROJECT_ID= Add IPFS project id (No qoutations)
+INFURA_IPFS_SECRET= Same for IPFS secret (No qoutations)
 ```
 
 If you are using git, let add a .gitignore file to omit the inclusion of unnecessary files.
@@ -216,7 +228,7 @@ Next let's add the hierarchical deterministic wallet (HD Wallet) which will hold
 Additionally, we will add `ethersJS`, a javascript library that allows us to easily interact with the Ethereum blockchain.
 
 ```bash
-yarn add @truffle/hdwallet-provider ethers
+yarn add @truffle/hdwallet-provider ethers@^5.0.0 node-fetch@2
 ```
 
 Next let's configure our Truffle set up. This will allow us to connect Truffle to Infura and access the Ethereum Network.
@@ -235,14 +247,17 @@ const mnemonic = process.env.MNEMONIC;
 
 //...
 // inside networks portion.
-ropsten: {
-      provider: () => new HDWalletProvider (mnemonic, infuraURL),
-    network_id: 3,
-    gas: 5500000,
-    confirmations: 2,
-    timeoutBlocks: 200,
-    skipDryRun: true
-    },
+networks: {
+  ropsten: {
+        provider: () => new HDWalletProvider (mnemonic, infuraURL),
+      network_id: 3,
+      gas: 5500000,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true
+      },
+}
+
 //...
 ```
 
@@ -268,29 +283,120 @@ Go to [faucet.paradigm.xyz/](https://faucet.paradigm.xyz/) and add your address 
 
 ### Front End
 
-Let's setup our client front end within the same repository.
+Let's setup our client front-end within the same repository. We will call it `/client`.
 
 ```bash
 npx create-react-app client
 ```
 
-- Add simple interface
+Navigate inside the `/client file` and initialize yarn. Additionally, add tailwind to help create a simple user interface.
+
+```bash
+npx yarn init -y && yarn add tailwind
+```
 
 ## Module 3: Code Time
 
 ### Smart Contracts Walkthrough
 
+Our focus for this tutorial will be on smart contracts and interacting with them.
+
 #### Migration
 
-##### Overview
+`Migrations.sol` keeps track of our smart contract migrations to the chain. No edits are required here.
 
-##### Code
+Each smart contract has a deployment script which we will explore later.
 
 #### NFT contract
 
-##### Overview: NFT
+Let's create our NFT Contract!
 
-##### Code: NFT
+Run the following command to create a new contract
+
+```bash
+npx truffle create contract MyNFT
+```
+
+Within `MyNFT.sol, add the following code
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
+
+contract MyNFT is ERC721 {
+  using Counters for Counters.Counter;
+
+  Counters.Counter private currentTokenId;
+
+  /// @dev Base token URI used as a prefix by tokenURI().
+  string public baseTokenURI;
+
+  constructor() ERC721("NFTTutorial", "NFT") {
+    baseTokenURI = "";
+  }
+
+  function mintTo(address recipient) public returns (uint256) {
+    currentTokenId.increment();
+    uint256 newItemId = currentTokenId.current();
+    _safeMint(recipient, newItemId);
+    return newItemId;
+  }
+
+  /// @dev Returns an URI for a given token ID
+  function _baseURI() internal view virtual override returns (string memory) {
+    return baseTokenURI;
+  }
+
+  /// @dev Sets the base token URI prefix.
+  function setBaseTokenURI(string memory _baseTokenURI) public {
+    baseTokenURI = _baseTokenURI;
+  }
+}
+```
+
+Now that we have our contract, let's compile it into EVM Bytecode for eventual deployment.
+
+```bash
+npx truffle compile
+```
+
+#### Deployment
+
+Let's now write the script for deployment to the Ropsten test network.
+
+Navigate to the root of your project directory and create the `2_deployNFT.js` file.
+
+```bash
+touch ./migrations/2_deployNFT.js
+```
+
+Inside 2_deployNFT.js add:
+
+```javascript
+var MyNFT = artifacts.require("MyNFT");
+
+module.exports = function (deployer) {
+  // deployment steps
+  deployer.deploy(MyNFT);
+};
+```
+
+Now we can deploy our contract to Ropsten test network!
+
+```bash
+truffle migrate --network ropsten
+```
+
+An error will be recieved. This is due to the account generated from our mnemomic inside does not have ETH. To resolve this issue, lets send the test Ether from your MetaMask account to the listed addressed.
+
+You have just completed your first transaction!
+
+Wait untill the transactions is finished in about 30 seconds. Then, run the above command again.
+
+Boom! You have just completed your second transaction and deployed your first contract!
 
 #### Simple Front end
 
