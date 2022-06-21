@@ -1,0 +1,11 @@
+{
+  "name": "NFT-Crash-Course",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:tesla809/NFT-Crash-Course.git",
+  "author": "Anthony Albertorio <anthony.albertorio@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.1"
+  }
+}

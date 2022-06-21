@@ -194,8 +194,11 @@ touch .gitignore
 At the top of the `.gitignore` file add the following
 
 ```text
-# environment
+# environment files
 .env
+
+# Mac OS files system - if mac users
+.DS_Store
 ```
 
 Below that text, add [following code](https://github.com/github/gitignore/blob/main/Node.gitignore) to the `.gitignore` file.
