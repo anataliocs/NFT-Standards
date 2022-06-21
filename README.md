@@ -394,6 +394,8 @@ An error will be recieved. This is due to the account generated from our mnemomi
 
 You have just completed your first transaction!
 
+![send-tx.gif](/img/send-tx.gif)
+
 Wait untill the transactions is finished in about 30 seconds. Then, run the above command again.
 
 Boom! You have just completed your second transaction and deployed your first contract!
