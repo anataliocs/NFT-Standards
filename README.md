@@ -369,7 +369,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract memeNFT is ERC721URIStorage, Ownable {
+contract MyNFT is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
@@ -709,4 +709,58 @@ Lets fix this!
 
 #### Adjusting NFT MetaData for OpenSea
 
-DO XYZ
+Let's adjust our file structure to allow for metadata. Metadata allows digita assets to have additional properties, like a name, description, and image. This metadata is used to display information on OpenSea's website.
+
+##### Create folders
+
+For the sake of organization, let's copy our `meme-nft.jpg` file into a new directory called `/images`.
+
+```bash
+mkdir images && cp img/meme-nft.jpeg images/nft-meme-nft.jpeg
+```
+
+Create an additional folder called `/metadata`. The `/metadata` directory will hold all the JSON files for the tokens in your NFT contract and we will upload all of them at once as a compiled [IPFS Car](https://ipld.io/specs/transport/car/carv1/).
+
+```bash
+mkdir metadata
+```
+
+#### Create Metadata
+
+Let's create the metadata file
+
+```bash
+touch metadata/MyNFT.json
+```
+
+Now let's add the metadata:
+
+```javascript
+{
+  "description": "So Hot, NFT Demo",
+  "external_url": "https://spooderman.infura-ipfs.io/ipfs/QmW5sPVbZDueZwvSuibteAwDFwFXhF8gebfptGBx1DZq1j",
+  "image": "https://spooderman.infura-ipfs.io/ipfs/QmW5sPVbZDueZwvSuibteAwDFwFXhF8gebfptGBx1DZq1j",
+  "name": "MyNFT - So Hot!",
+  "background_color": "#FFF"
+}
+```
+
+##### Modify contract
+
+OpenSea requires the `tokenURI` method in the ERC721 standard to pull off-chain metadata for an NFT. The `uri` (uniform resource identifer) should return an `https` or `ipfs` URL.
+
+```solidity
+/**
+ * @dev Returns an URI for a given token ID
+ */
+function tokenURI(uint256 _tokenId) public view returns (string) {
+  return Strings.strConcat(
+      baseTokenURI(),
+      Strings.uint2str(_tokenId)
+  );
+}
+```
+
+When queried, this URL returns JSON data representing your NFT metadata.
+
+![opensea-metadata-overview.png](/img/opensea-metadata-overview.png)
