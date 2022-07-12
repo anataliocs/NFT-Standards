@@ -366,6 +366,11 @@ Wait until the transactions is finished in about 15 seconds. Then, run the above
 truffle migrate --network rinkeby
 ```
 
+Replace deployed contract on testnet
+```
+truffle migrate --reset --network rinkeby
+```
+
 Note: Save the contract address of InfuraNFT(0x65a156B90bc5E3e858C3e77d7Fd524A0F80c64e1, in this example) because you'll need it when minting the InfuraNFT.
 
 ### Update .env file
