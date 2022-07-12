@@ -1,88 +1,10 @@
-# NFT-Crash-Course
+# NFT-Standards
 
-How does this apply to APIs?
+ERC-721 vs ERC-721a vs ERC-1155
 
-- Learn and create an NFT in under 20 minutes!
-- Add to some API that deals with lending markets?
+- Compare different NFT Implementations
 
-Our target audience is experienced web2 devs discovering web3.
-
-## Module 1: Overview
-
-### Tutorial Overview
-
-We will be covering how to build and launch a non-fungible token (NFT) in under 20 minutes. You will also get a hands-on tour of the web3 developer tooling to create decentralized applications on Ethereum.
-
-We hope to inspire your imagination and aid your experimentation with new types of businesses and services using Ethereum Virtual based smart contracts.
-
-What can you build with tools that easily create and scale coordination networks to millions of people?
-
-#### Ethereum: Reliable and Composible APIs
-
-As a web2 developer, why should we care about web3?
-
-Ethereum offers something that application developers of all types can appreciate: a platform to create and leverage open and consistent APIs and datasets without permission.
-
-**Always on:**  
-You can rely on an Ethereum-based API without ever worrying about being sunset. With web2, you are at the mercy of the team continuing to host the API on a third-party server. With Ethereum, as long as one node in the blockchain network exists, the deployed codebase will also. Web2 history is littered with shutdown APIs that pull the rug on teams who built on top of these tools.
-
-**Always available:**  
-You can confidently build on other people's smart contracts without asking permission. With web2, your access to an API can be turned off at any time, like what happened to third-party Twitter developers early in its life. Due to the open nature of the blockchain data, there is no risk of losing access to your datasets.
-
-Sometimes web2 services experience downtime on the service. With Ethereum, due to incentives built into the protocol, there is a high degree of decentralization resulting in the lack of reported network outages.
-
-**Consistency:**  
-Once deployed, the smart contract-based API will not change. Due to the immutability of smart contracts, developers can build on top of an API and know it will operate exactly like the first time. Some caveats can allow for upgrading of parameters and contract logic; however, smart contract code is available for all to read and anticipate future changes.
-
-**Interoperability, open to all:**  
-You can access the dataset of other smart contracts—no need to ask permission to extend another project's utility. Developers can easily mix and match different standardized smart contract APIs to create new possibilities. Users can easily migrate their data between different codebases on the same chain.
-
-**Programmable scarcity:**
-Abundance is fantastic. However, they don't allow us to model the real world without trusting intermediaries to enforce limits. Blockchains enforce scarcity and arbitrary business logic without the need to trust a central intermediary. They impartially process any business logic without special interest. This allows us to create new types of collaboration methods not seen before.
-
-### Concepts Overview
-
-#### Blockchains
-
-A single blockchain is like a linked list connected by the hash of the previous block of information. By hashing blocks and linking them together, they increase the difficulty of manipulation.
-
-A blockchain network is when this blockchain is spread across various nodes for redundancy. The more decentralized the network, the more tamper-resistant the network. This increases trust in the system, which reduces the need for trust between entities. In addition, the network's state is constantly updated through a consensus mechanism.
-
-In a sense, a blockchain is a database AND a network rolled up into one.
-
-The blockchain's key innovation is commoditizing trust and allowing for peers' coordination in open adversarial environments.
-
-### Ethereum
-
-Ethereum is the leading programmable blockchain. Due to its high degree of decentralization, immutability, and extensibility, Ethereum is the prime place to create and leverage highly reliable APIs. Ethereum especially excels around critical applications around value transfer.
-
-Ethereum's smart contracts allow for the creation of reliable APIs which can programmatically enforce dealings between counterparties.
-
-### Smart contract
-
-Smart contracts are programmable pieces of code that run on the Ethereum blockchain.
-
-### NFT
-
-A nonfungible token (NFT) is a digital asset that represents a unique item. It is created from the ERC-721 standard and highlights what type of functionality and interface the underlying smart contract will contain.
-
-#### IPFS
-
-Interplanetary file storage (IPFS) is a peer-to-peer hypermedia protocol. It is an alternative to HTTPS for the decentralized web.
-
-#### MetaMask
-
-MetaMask is a cryptocurrency wallet. It provides a simple and most secure way to connect to blockchain-based applications.
-
-#### Infura
-
-The world-leading Ethereum infrastructure provider. Infura allows developers to access and scale their decentralized applications on Ethereum without needing to manage their own nodes.
-
-#### Truffle
-
-Truffle is a smart contract development environment for Ethereum Virtual Machine (EVM) based networks.
-
-## Module 2: Setup
+## Module 1: Setup
 
 In this section, we will walk through setting up your development environment.
 
@@ -420,11 +342,11 @@ The deployment scripts are numbered in the order we wish to deploy them.
 Inside `2_deployNFT.js` add:
 
 ```javascript
-var MyNFT = artifacts.require("MyNFT");
+var InfuraNFT = artifacts.require("InfuraNFT");
 
 module.exports = function (deployer) {
   // deployment steps
-  deployer.deploy(MyNFT);
+  deployer.deploy(InfuraNFT);
 };
 ```
 
@@ -434,153 +356,17 @@ Now we can deploy our contract to Rinkeby test network!
 truffle migrate --network rinkeby
 ```
 
-An error will be recieved. This is due to the account generated from our mnemomic inside does not have ETH.
-
-```bash
-Compiling your contracts...
-===========================
-> Everything is up to date, there is nothing to compile.
-
-
-
-Starting migrations...
-======================
-> Network name:    'rinkeby'
-> Network id:      4
-> Block gas limit: 29999972 (0x1c9c364)
-
-
-1_initial_migration.js
-======================
-
-   Deploying 'Migrations'
-   ----------------------
- *** Deployment Failed ***
-
-"Migrations" could not deploy due to insufficient funds
-   * Account:  0xFd145c8138E7534F6d2FdEec89E4E92eb76a43F4
-   * Balance:  0 wei
-   * Message:  insufficient funds for gas * price + value
-   * Try:
-      + Using an adequately funded account
-      + If you are using a local Geth node, verify that your node is synced.
-
-
-Exiting: Review successful transactions manually by checking the transaction hashes above on Etherscan.
-
-
-Error:  *** Deployment Failed ***
-
-"Migrations" could not deploy due to insufficient funds
-   * Account:  0xFd145c8138E7534F6d2FdEec89E4E92eb76a43F4
-   * Balance:  0 wei
-   * Message:  insufficient funds for gas * price + value
-   * Try:
-      + Using an adequately funded account
-      + If you are using a local Geth node, verify that your node is synced.
-```
-
-To resolve this issue, let's send the test Ether from your MetaMask account to the listed addressed.
-
 ![send-tx.gif](/img/send-rinkeby.gif)
 
 You have just completed your first transaction!
 
-Wait untill the transactions is finished in about 15 seconds. Then, run the above command again.
+Wait until the transactions is finished in about 15 seconds. Then, run the above command again.
 
 ```bash
 truffle migrate --network rinkeby
 ```
 
-You will see something like
-
-```bash
-Compiling your contracts...
-===========================
-> Everything is up to date, there is nothing to compile.
-
-
-
-Starting migrations...
-======================
-> Network name:    'rinkeby'
-> Network id:      4
-> Block gas limit: 30000000 (0x1c9c380)
-
-
-1_initial_migration.js
-======================
-
-   Deploying 'Migrations'
-   ----------------------
-   ⠋ Blocks: 0            Seconds: 0   > transaction hash:    0x22fa0d933d4f677654d1ce02b7d5ba8278d385d43af8f7494e87bb89c7a1b29e
-   ⠦ Blocks: 0            Seconds: 0undefined
-   ⠴ Blocks: 0            Seconds: 4undefined
-   > Blocks: 0            Seconds: 8
-   > contract address:    0xa87186C125a3142953D6F0ff9Ec145fE1384f54d
-   > block number:        10893042
-   > block timestamp:     1655847941
-   > account:             0xFd145c8138E7534F6d2FdEec89E4E92eb76a43F4
-   > balance:             0.99937461499499692
-   > gas used:            250154 (0x3d12a)
-   > gas price:           2.50000002 gwei
-   > value sent:          0 ETH
-   > total cost:          0.00062538500500308 ETH
-
-   Pausing for 2 confirmations...
-
-   -------------------------------
-   > confirmation number: 1 (block: 10893043)
-   > confirmation number: 2 (block: 10893044)
-
-   > Saving migration to chain.
-   > Saving artifacts
-   -------------------------------------
-   > Total cost:     0.00062538500500308 ETH
-
-
-2_deployNFT.js
-==============
-
-   Deploying 'MyNFT'
-   -----------------
-   ⠋ Blocks: 0            Seconds: 0   > transaction hash:    0x2de0eca9c6d75a87d1076d248427981f9d6d1ce989dc2cfe651c4acdd92dc23e
-   ⠦ Blocks: 0            Seconds: 0undefined
-   ⠼ Blocks: 0            Seconds: 4undefined
-   ⠸ Blocks: 0            Seconds: 8undefined
-   > Blocks: 0            Seconds: 12
-   > contract address:    0x47DC746F41c5dB584e5A6ccf15c2c161560cD0F7
-   > block number:        10893046
-   > block timestamp:     1655848001
-   > account:             0xFd145c8138E7534F6d2FdEec89E4E92eb76a43F4
-   > balance:             0.992331707447059236
-   > gas used:            2771250 (0x2a4932)
-   > gas price:           2.500000017 gwei
-   > value sent:          0 ETH
-   > total cost:          0.00692812504711125 ETH
-
-   Pausing for 2 confirmations...
-
-   -------------------------------
-   > confirmation number: 1 (block: 10893047)
-   > confirmation number: 2 (block: 10893048)
-
-   > Saving migration to chain.
-   > Saving artifacts
-   -------------------------------------
-   > Total cost:     0.00692812504711125 ETH
-
-Summary
-=======
-> Total deployments:   2
-> Final cost:          0.00755351005211433 ETH
-
-
-```
-
-Boom! You have just completed your second transaction and deployed your first contract!
-
-Note: Save the contract address of MyNFT(0x65a156B90bc5E3e858C3e77d7Fd524A0F80c64e1, in this example) because you'll need it when minting the NFT.
+Note: Save the contract address of InfuraNFT(0x65a156B90bc5E3e858C3e77d7Fd524A0F80c64e1, in this example) because you'll need it when minting the InfuraNFT.
 
 ### Update .env file
 
@@ -635,7 +421,7 @@ require("dotenv").config();
 const { TOKEN_URI, CONTRACT_ADDRESS, PUBLIC_ADDRESS } = process.env;
 
 // Loading the compiled contract Json
-const contractJson = require("../build/contracts/MyNFT.json");
+const contractJson = require("../build/contracts/InfuraNFT.json");
 
 module.exports = async function (callback) {
   // web3 is injected by Truffle
@@ -730,7 +516,7 @@ mkdir metadata
 Let's create the metadata file
 
 ```bash
-touch metadata/MyNFT.json
+touch metadata/InfuraNFT.json
 ```
 
 Now let's add the metadata:

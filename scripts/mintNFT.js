@@ -3,7 +3,7 @@ require("dotenv").config();
 const { TOKEN_URI, CONTRACT_ADDRESS, PUBLIC_ADDRESS } = process.env;
 
 // Loading the compiled contract Json
-const contractJson = require("../build/contracts/MyNFT.json");
+const contractJson = require("../build/contracts/InfuraNFT.json");
 
 module.exports = async function (callback) {
   // web3 is injected by Truffle
