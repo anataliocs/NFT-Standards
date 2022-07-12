@@ -331,15 +331,15 @@ Compiled files go in the `build/contracts/` directory, relative to your project 
 
 Let's now write the script for deployment to the Rinkeby test network.
 
-Navigate to the root of your project directory and create the `2_deployNFT.js` file.
+Navigate to the root of your project directory and create the `2_deployInfura721.js` file.
 
 ```bash
-touch ./migrations/2_deployNFT.js
+touch ./migrations/2_deployInfura721.js
 ```
 
 The deployment scripts are numbered in the order we wish to deploy them.
 
-Inside `2_deployNFT.js` add:
+Inside `2_deployInfura721.js` add:
 
 ```javascript
 var InfuraNFT = artifacts.require("InfuraNFT");
@@ -412,13 +412,13 @@ Create a `/scripts` directory in the project's root directory and enter the said
 mkdir scripts && cd ./scripts
 ```
 
-Next lets create the `mintNFT.js` script
+Next lets create the `mintSingleNFT.js` script
 
 ```bash
-touch mintNFT.js
+touch mintSingleNFT.js
 ```
 
-Within `mintNFT.js` add the following code:
+Within `mintSingleNFT.js` add the following code:
 
 ```javascript
 require("dotenv").config();
@@ -469,7 +469,7 @@ module.exports = async function (callback) {
 Run the following script
 
 ```bash
-npx truffle exec scripts/mintNFT.js --network rinkeby
+npx truffle exec scripts/mintSingleNFT.js --network rinkeby
 ```
 
 Once you run the script, wait about 15 to 30 seconds. You should see something similar to:

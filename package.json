@@ -10,5 +10,8 @@
     "@truffle/hdwallet-provider": "^2.0.9",
     "dotenv": "^16.0.1",
     "ethers": "^5.0.0"
+  },
+  "devDependencies": {
+    "erc721a": "^4.1.0"
   }
 }

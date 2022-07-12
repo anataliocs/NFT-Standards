@@ -24,7 +24,7 @@ module.exports = async function (callback) {
       gas: await tx.estimateGas(),
     })
     .on("transactionHash", (txhash) => {
-      console.log(`Mining transaction ...`);
+      console.log(`Mining ERC-721 transaction for a single NFT ...`);
       console.log(`https://${network}.etherscan.io/tx/${txhash}`);
     })
     .on("error", function (error) {
@@ -32,9 +32,11 @@ module.exports = async function (callback) {
       callback();
     })
     .then(function (receipt) {
+      let batchGasCost = receipt.gasUsed * 3;
       // Success, you've minted the NFT. The transaction is now on chain!
       console.log(
-        `Success: The NFT has been minted and mined in block ${receipt.blockNumber}`
+        `Success: The single ERC-721 NFT has been minted and mined in block ${receipt.blockNumber} which cost ${receipt.gasUsed} gas`
+          + `\n If you were to execute this script 3 times to perform a batch mint, the gas cost would be ${batchGasCost} \n`
       );
       callback();
     });
