@@ -1,7 +1,7 @@
 {
   "name": "Infura 721 NFT Items",
   "description": "Infura 721 NFT Items used in workshops, tutorials and reference applications.",
-  "image": "external-link-url/image.png",
+  "image": "https://raw.githubusercontent.com/anataliocs/NFT-Standards/main/images/infura_lockup_red.png",
   "external_link": "https://infura.io/",
   "seller_fee_basis_points": 0
 }
