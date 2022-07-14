@@ -2,15 +2,17 @@
 
 ERC-721 vs ERC-721a vs ERC-1155
 
-- Compare different NFT Implementations
+Compare different NFT Implementations to help you decide which to use for your project.
+
+- [Companion Article](https://blog.infura.io/)
 
 ## Module 1: Setup
 
-In this section, we will walk through setting up your development environment.
+Setting up your local development environment.
 
 ### Prerequisites
 
-You must setup:
+Basic Setup:
 
 - [NodeJS](https://nodejs.org/en/) version 16 or above
 - [Visual Studio Code](https://code.visualstudio.com/)
@@ -29,7 +31,7 @@ Set up your wallet. **Remember to save your secret recovery phrase in a secure l
 
 ### Infura Setup
 
-Next, you will need to [set up a free account with Infura](https://infura.io/register).
+Next, you will need to [set up a free account with Infura](https://infura.io/register?utm_source=github&utm_medium=devcommunity&utm_campaign=2022_Jul_devrel-sample-projects_content_content).
 
 ![infura-signup.png](img/infura-signup.png)
 
@@ -52,12 +54,16 @@ You will save both these credentials into an .env file.
 
 ![ipfs-creds-infura](img/ipfs-creds-infura.png)
 
-### Upload Art to IPFS
+### Upload Image data to IPFS
 
 Find a sample image you'd like to upload to IPFS.
 
 We will be using this one:
 ![meme-nft.jpeg](/img/meme-nft.jpeg)
+
+You can use the  [Infura IPFS upload tool](https://blog.infura.io/post/ipfs-file-upload-client-tool) to upload images.
+
+Or you can use basic cURL commands.
 
 From your project root, run the follow `curl`command to upload the image. Make sure to modify the `curl` script to add the `Project Secret`and`Project ID` from your **IPFS project**, not your Rinkeby project.
 
