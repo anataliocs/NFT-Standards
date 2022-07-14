@@ -11,11 +11,9 @@ contract Infura721NFT is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
-    event Mint(uint256 _value, string tokenURI);
-
     constructor() ERC721("Infura721NFT", "INFURA721") {}
 
-    function mintNFT(address recipient, string memory tokenURI)
+    function mintNFT(address recipient)
         public
         returns (uint256)
     {
@@ -23,7 +21,6 @@ contract Infura721NFT is ERC721URIStorage, Ownable {
 
         uint256 newItemId = _tokenIds.current();
         _safeMint(recipient, newItemId);
-        emit Mint(newItemId, tokenURI);
 
         return newItemId;
     }
@@ -34,10 +31,6 @@ contract Infura721NFT is ERC721URIStorage, Ownable {
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         _requireMinted(tokenId);
 
-        return "https://raw.githubusercontent.com/anataliocs/NFT-Standards/main/metadata/InfuraNFT.json";
-    }
-
-    function _baseURI() internal pure override returns (string memory) {
         return "https://raw.githubusercontent.com/anataliocs/NFT-Standards/main/metadata/InfuraNFT.json";
     }
 

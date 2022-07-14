@@ -20,4 +20,7 @@ contract Infura1155NFT is ERC1155, Ownable {
         return 0;
     }
 
+    function contractURI() public view returns (string memory) {
+        return "https://raw.githubusercontent.com/anataliocs/NFT-Standards/main/metadata/opensea-contract-1155.json";
+    }
 }

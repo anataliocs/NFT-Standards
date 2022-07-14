@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const { TOKEN_URI, CONTRACT_ADDRESS, PUBLIC_ADDRESS } = process.env;
+const { CONTRACT_ADDRESS, PUBLIC_ADDRESS } = process.env;
 
 // Loading the compiled contract Json
 const contractJson = require("../build/contracts/Infura721NFT.json");
@@ -16,7 +16,7 @@ module.exports = async function (callback) {
   const network = await web3.eth.net.getNetworkType();
 
   // Generate a transaction to calls the `mintNFT` method
-  const tx = contract.methods.mintNFT(PUBLIC_ADDRESS, TOKEN_URI);
+  const tx = contract.methods.mintNFT(PUBLIC_ADDRESS);
   // Send the transaction to the network
   const receipt = await tx
     .send({
