@@ -41,6 +41,10 @@ contract Infura721NFT is ERC721URIStorage, Ownable {
         return "https://raw.githubusercontent.com/anataliocs/NFT-Standards/main/metadata/InfuraNFT.json";
     }
 
+    function contractURI() public view returns (string memory) {
+        return "https://raw.githubusercontent.com/anataliocs/NFT-Standards/main/metadata/opensea-contract-721.json";
+    }
+
     /**
         * @dev Reverts if the `tokenId` has not been minted yet.
     */
