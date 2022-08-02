@@ -4,10 +4,11 @@ ERC-721 vs ERC-721a vs ERC-1155
 
 We will review different NFT Implementations to help you decide which to use for your project.
 
-Additionally, we will go into how to ensure NFT and contract metadata shows up correctly on Opensea.
+Additionally, we will go into how to ensure NFT and contract metadata shows up correctly on Opensea.  We will mint NFTs on various standards, review the gas costs and view the transactions and resulting NFTs.
 
-- [Companion Article](https://blog.infura.io/)
+- [Companion Article](https://blog.infura.io/post/comparing-nft-standards-erc-721-vs-erc-721a-vs-erc-1155)
 - [Sign up for a free account with Infura](https://infura.io/register?utm_source=github&utm_medium=devcommunity&utm_campaign=2022_Jul_devrel-sample-projects_content_content).
+- [Getting Started with Infura](https://blog.infura.io/post/getting-started-with-infura-28e41844cc89)
 
 
 ## Module 1: Setup
