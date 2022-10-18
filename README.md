@@ -37,7 +37,6 @@ Add the Infura credentials
 MNEMONIC= Add your 12 word secret phrase to access your assets on Ethereum. Never share these! Wrap in qoutations.
 
 # Infura Project details
-INFURA_PROJECT_ID= Add your secret here. (No qoutations)
 INFURA_PROJECT_SECRET=Add your ID here. (No quotations)
 
 # IPFS Project details
