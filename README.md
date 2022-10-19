@@ -205,7 +205,7 @@ module.exports = function (deployer) {
 };
 ```
 
-Now we can deploy our contract to mumbai test network!
+Now we can deploy our contract to Mumbai test network!
 
 ```bash
 truffle migrate --network mumbai
