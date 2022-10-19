@@ -131,7 +131,7 @@ npx yarn add @openzeppelin/contracts
 
 Now, let's configure our Truffle set up. This will allow us to connect Truffle to Infura and access the Ethereum Network.
 
-This particular network, `mumbai`, is test network. Test networks are used to deploy contract for testing for free. This allows developers to experiment with contracts conditions that mirror the Ethereum Mainnet where Ether is worth real money.
+This particular network, `Mumbai`, is a test network. Test networks are used to deploy a contract for testing for free. This allows developers to experiment with contract conditions that mirror the Ethereum Mainnet where Ether is worth real money.
 
 Open `truffle.config.js` and modify `truffle-config.js` with the following code:
 
