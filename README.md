@@ -155,7 +155,7 @@ networks: {
      },
      mumbai: {
        provider: () => new HDWalletProvider(mnemonic, infuraPolygonURL),
-       network_id: 80001, // mumbai's id
+       network_id: 80001, // Mumbai's id
        timeoutBlocks: 900, // # of blocks before a deployment times out  (minimum/default: 50)
        skipDryRun: true, // Skip dry run before migrations? (default: false for public nets )
      },
