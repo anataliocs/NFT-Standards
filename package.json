@@ -6,7 +6,7 @@
   "author": "Anthony Albertorio <anthony.albertorio@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.6.0",
+    "@openzeppelin/contracts": "^4.7.3",
     "@truffle/hdwallet-provider": "^2.0.9",
     "dotenv": "^16.0.3",
     "ethers": "^5.0.0"
