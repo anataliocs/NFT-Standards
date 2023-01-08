@@ -303,3 +303,27 @@ Example metadata:
   "background_color": "#FFF"
 }
 ```
+### Module 5: Writing Contract Tests
+
+Execute tests:
+
+```bash
+truffle test
+```
+
+Example Output:
+
+```bash
+  Contract: Infura721aNFTContract
+    ✓ Contract deployment (39ms)
+    ✓ Should mint Infura721aNFT token
+
+  Contract: Infura721NFTContract
+    ✓ Contract deployment (41ms)
+    ✓ Should mint Infura721NFT token
+
+  Contract: Infura1155NFTContract
+    ✓ Contract deployment
+    ✓ Should mint Infura1155NFT token
+
+```
