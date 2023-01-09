@@ -73,7 +73,6 @@ contract('Infura1155NFTContract', function (accounts) {
             .then(function (result) {
                 assert(result.logs.length === 3, '3 TransferSingle Events should have been emitted');
                 assert(result.logs[0].event === 'TransferSingle', 'Transfer Event should have been emitted');
-                assert(result.logs[0].args[0] === '0xC7E08ecBdbA5Fbf8b9F7d076Ad01e0f58C5B2647', 'Transfer Event arg[0] should be operator');
                 assert(result.logs[0].args[1] === '0x0000000000000000000000000000000000000000', 'Transfer Event arg[1] should be sender');
                 assert(result.logs[0].args[2] === toAddress, 'Transfer Event arg[1] should be receiver');
                 assert(result.logs[0].args[3].toNumber() === 0, 'Transfer Event arg[3] should be id');

@@ -21,8 +21,8 @@ contract Infura721aNFT is ERC721A, Ownable {
     /**
      * @dev See {IERC721Metadata-tokenURI}.
      */
-    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
-        _requireMinted(tokenId);
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        require(_exists(tokenId));
 
         return "https://raw.githubusercontent.com/anataliocs/NFT-Standards/main/metadata/InfuraNFT.json";
     }
@@ -31,14 +31,7 @@ contract Infura721aNFT is ERC721A, Ownable {
         return "https://raw.githubusercontent.com/anataliocs/NFT-Standards/main/metadata/InfuraNFT.json";
     }
 
-    function contractURI() public view returns (string memory) {
+    function contractURI() public pure returns (string memory) {
         return "https://raw.githubusercontent.com/anataliocs/NFT-Standards/main/metadata/opensea-contract-721a.json";
-    }
-
-    /**
-        * @dev Reverts if the `tokenId` has not been minted yet.
-    */
-    function _requireMinted(uint256 tokenId) internal view virtual {
-        require(_exists(tokenId), "ERC721: invalid token ID");
     }
 }
