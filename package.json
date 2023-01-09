@@ -1,9 +1,9 @@
 {
-  "name": "NFT-Crash-Course",
+  "name": "NFT-Standards",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:tesla809/NFT-Crash-Course.git",
-  "author": "Anthony Albertorio <anthony.albertorio@gmail.com>",
+  "repository": "https://github.com/anataliocs/NFT-Standards",
+  "author": "Chris Anatalio <chris.anatalio@consensys.net>",
   "license": "MIT",
   "dependencies": {
     "@openzeppelin/contracts": "^4.7.3",
