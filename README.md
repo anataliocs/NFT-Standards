@@ -66,7 +66,7 @@ First, select Ethereum project.
 
 ![create-new-project.png](img/create-new-project.png)
 
-Choose the Goerli Test Network. It's easier to view testnet NFTs on this network via OpenSea.
+Choose the Sepolia Test Network. It's easier to view testnet NFTs on this network via OpenSea.
 
 ![eth-creds-infura-mumbai](img/infura-goerli-endpoints.png)
 
