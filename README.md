@@ -140,7 +140,7 @@ Open `truffle.config.js` and modify `truffle-config.js` with the following code:
 
  require("dotenv").config(); // allows usage of .env file to store secrets
  const HDWalletProvider = require("@truffle/hdwallet-provider");
- const infuraURL = `https://gosepoliaerli.infura.io/v3/${process.env.INFURA_PROJECT_SECRET}`;
+ const infuraURL = `https://sepolia.infura.io/v3/${process.env.INFURA_PROJECT_SECRET}`;
  const infuraPolygonURL = `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_PROJECT_SECRET}`;
  const mnemonic = process.env.MNEMONIC;
 
