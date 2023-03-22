@@ -20,7 +20,7 @@
 
  require("dotenv").config(); // allows usage of .env file to store secrets
  const HDWalletProvider = require("@truffle/hdwallet-provider");
- const infuraURL = `https://goerli.infura.io/v3/${process.env.INFURA_PROJECT_SECRET}`;
+ const infuraURL = `https://sepolia.infura.io/v3/${process.env.INFURA_PROJECT_SECRET}`;
  const infuraPolygonURL = `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_PROJECT_SECRET}`;
  const mnemonic = process.env.MNEMONIC;
  
@@ -58,9 +58,9 @@
      // },
      // Useful for deploying to a public network.
      // NB: It's important to wrap the provider as a function.
-     goerli: {
+     sepolia: {
        provider: () => new HDWalletProvider(mnemonic, infuraURL),
-       network_id: 5, // Goerli's id
+       network_id: 11155111, // Sepolia's id
        timeoutBlocks: 200, // # of blocks before a deployment times out  (minimum/default: 50)
        skipDryRun: true, // Skip dry run before migrations? (default: false for public nets )
      },
