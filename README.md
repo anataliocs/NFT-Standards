@@ -182,7 +182,7 @@ Luckily, for our test networks, Test Matic is free.
 
 Go to [faucet.polygon.technology/](https://faucet.polygon.technology/) and add your address to claim Matic on Mumbai.
 
-For Sepolia ETH, you can use our free Infura faucet, https://www.infura.io/faucet.
+For Sepolia ETH, you can use our free Infura faucet, https://www.infura.io/faucet/sepolia.
 
 ## Module 3: Deployment
 
