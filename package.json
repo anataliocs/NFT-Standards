@@ -6,7 +6,7 @@
   "author": "Chris Anatalio <chris.anatalio@consensys.net>",
   "license": "MIT",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.7.3",
+    "@openzeppelin/contracts": "^4.9.1",
     "@truffle/hdwallet-provider": "^2.0.9",
     "dotenv": "^16.0.3",
     "ethers": "^5.0.0"
